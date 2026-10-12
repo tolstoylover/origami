@@ -1,1 +1,158 @@
 @import "tailwindcss";
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  touch-action: none;
+}
+
+.game-canvas.folding {
+  cursor: crosshair;
+}
+
+.game-canvas.dragging {
+  cursor: grabbing;
+}
+
+.ui-overlay {
+  position: absolute;
+  pointer-events: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.ui-overlay > * {
+  pointer-events: auto;
+}
+
+.pattern-card {
+  background: #f4ead5;
+  border: 2px solid #d4c4a5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+}
+
+.pattern-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-color: #8a6a4a;
+}
+
+.pattern-card.active {
+  border-color: #5a4a3a;
+  background: #ede0c8;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.pattern-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.color-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #d4c4a5;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch.active {
+  border-color: #5a4a3a;
+  box-shadow: 0 0 0 2px #5a4a3a;
+}
+
+.hint-text {
+  font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+  color: #6a5a4a;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.btn-paper {
+  background: #f4ead5;
+  border: 1.5px solid #c4b495;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  color: #4a3a2a;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn-paper:hover {
+  background: #ede0c8;
+  transform: translateY(-1px);
+}
+
+.btn-paper:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.weather-btn {
+  background: rgba(244, 234, 213, 0.85);
+  border: 1.5px solid #c4b495;
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.weather-btn:hover {
+  background: rgba(237, 224, 200, 0.95);
+}
+
+.weather-btn.active {
+  background: #ede0c8;
+  border-color: #8a6a4a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
